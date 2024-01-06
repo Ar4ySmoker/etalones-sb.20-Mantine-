@@ -1,11 +1,11 @@
 
 import styles from './page.module.css'
-import { HeaderMenu } from './components/HeaderMenu'
-import { BadgeCard } from './components/BadgeCard'
-import work from './data/work.json'
+// import { HeaderMenu } from './components/HeaderMenu'
+// import { BadgeCard } from './components/BadgeCard'
+// import work from './data/work.json'
 import { Container } from '@mantine/core'
-import { HeroImageRight } from './components/HeroImageRight'
-import FormTime from './components/FormTime'
+// import { HeroImageRight } from './components/HeroImageRight'
+// import FormTime from './components/FormTime'
 
 
 if (typeof window !== 'undefined') {
@@ -15,17 +15,18 @@ if (typeof window !== 'undefined') {
 export default function Home() {
   return (
     <>
-      <HeaderMenu />
+      {/* <HeaderMenu />
       <HeroImageRight />
-      <FormTime />
+      <FormTime /> */}
 
 
       <Container>
-        <div className={styles.card}>
+        Hello
+        {/* <div className={styles.card}>
           {work.map((data, index) => (
             <BadgeCard key={index} {...data} />
           ))}
-        </div>
+        </div> */}
       </Container>
     </>
   )
