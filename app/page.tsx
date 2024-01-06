@@ -8,7 +8,10 @@ import { HeroImageRight } from './components/HeroImageRight'
 import FormTime from './components/FormTime'
 
 
-
+if (typeof window !== 'undefined') {
+  // Perform localStorage action
+  const item = localStorage.getItem('key')
+}
 export default function Home() {
   return (
     <>
