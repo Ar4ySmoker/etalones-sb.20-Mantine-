@@ -1,3 +1,4 @@
+'use client'
 import { Container, Title, Text, Button } from '@mantine/core';
 import classes from './HeroImageRight.module.css';
 
