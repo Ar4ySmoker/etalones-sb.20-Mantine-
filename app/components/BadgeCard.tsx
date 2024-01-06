@@ -21,7 +21,7 @@ interface BadgeCardProps {
 }
 
 export function BadgeCard({ image, title, description, country, badges }: BadgeCardProps) {
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(null);
 
 
     const features = badges.map((badge) => (
