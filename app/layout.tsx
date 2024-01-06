@@ -1,6 +1,7 @@
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import '@mantine/core/styles.css';
+import { manrope } from '@/app/ui/fonts';
 
 import { ColorSchemeScript, MantineProvider, createTheme, MantineColorsTuple } from '@mantine/core';
 export const metadata = {
@@ -41,7 +42,7 @@ export default function RootLayout({
       <head>
         <ColorSchemeScript />
       </head>
-      <body>
+      <body className={`${manrope.className} antialiased`}>
         <MantineProvider theme={theme}>{children}</MantineProvider>
       </body>
     </html>
