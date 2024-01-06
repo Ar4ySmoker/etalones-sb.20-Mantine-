@@ -71,20 +71,17 @@ export function BadgeCard({ image, title, description, country, badges }: BadgeC
             </Card.Section>
 
             <Group mt="xs">
-                <Button radius="md" style={{ flex: 1 }} onClick={() => setModalOpen(true)}>
+                <Button radius="md" style={{ flex: 1 }} >
                     Подробнее
                 </Button>
                 <ActionIcon variant="default" radius="md" size={36} >
                     <IconHeart className={classes.like} stroke={1.5} />
                 </ActionIcon>
-                {/* Отображение числа лайков */}
+
 
             </Group>
 
-            <Modal opened={isModalOpen} onClose={() => setModalOpen(false)} title="Подробности о вакансии">
-                {/* Содержимое модального окна */}
-                <p>Здесь может быть более подробная информация о вакансии.</p>
-            </Modal>
+
         </Card>
     );
 }
