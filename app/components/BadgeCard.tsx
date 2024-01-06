@@ -23,9 +23,12 @@ interface BadgeCardProps {
 export function BadgeCard({ image, title, description, country, badges }: BadgeCardProps) {
     const [isModalOpen, setModalOpen] = useState(false);
     const [likeCount, setLikeCount] = useState<number>(() => {
-        // Используем localStorage для получения сохраненного значения
-        const savedLikeCount = localStorage.getItem(`likeCount_${title}`);
-        return savedLikeCount ? parseInt(savedLikeCount, 10) : 0;
+        // Проверяем, определен ли localStorage
+        if (typeof window !== 'undefined') {
+            const savedLikeCount = localStorage.getItem(`likeCount_${title}`);
+            return savedLikeCount ? parseInt(savedLikeCount, 10) : 0;
+        }
+        return 0;
     });
 
     const features = badges.map((badge) => (
@@ -44,15 +47,20 @@ export function BadgeCard({ image, title, description, country, badges }: BadgeC
     const handleLikeClick = () => {
         setLikeCount((prevCount) => {
             const newCount = prevCount + 1;
-            // Сохраняем новое значение в localStorage
-            localStorage.setItem(`likeCount_${title}`, newCount.toString());
+            // Сохраняем новое значение в localStorage, если он определен
+            if (typeof window !== 'undefined') {
+                localStorage.setItem(`likeCount_${title}`, newCount.toString());
+            }
             return newCount;
         });
     };
 
     // Используем useEffect для отслеживания изменений likeCount и сохранения их в localStorage
     useEffect(() => {
-        localStorage.setItem(`likeCount_${title}`, likeCount.toString());
+        // Сохраняем новое значение в localStorage, если он определен
+        if (typeof window !== 'undefined') {
+            localStorage.setItem(`likeCount_${title}`, likeCount.toString());
+        }
     }, [likeCount, title]);
 
     return (
