@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import styles from './page.module.css'
 import { HeaderMenu } from './components/HeaderMenu'
 import { BadgeCard } from './components/BadgeCard'

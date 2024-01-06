@@ -28,11 +28,9 @@
     "@tiptap/starter-kit": "^2.1.13",
     "dayjs": "^1.11.10",
     "embla-carousel-react": "^7.1.0",
-    "fs": "^0.0.1-security",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-imask": "^7.3.0",
     "recharts": "^2.10.3"
   },
   "devDependencies": {
