@@ -1,6 +1,6 @@
 'use client'
-import { useState, useEffect } from 'react';
-import { useDisclosure } from '@mantine/hooks';
+import { useState } from 'react';
+
 import { Card, Text, Group, Badge, Button, ActionIcon, Modal } from '@mantine/core';
 import { IconHeart } from '@tabler/icons-react';
 import Image from 'next/image';
@@ -22,14 +22,7 @@ interface BadgeCardProps {
 
 export function BadgeCard({ image, title, description, country, badges }: BadgeCardProps) {
     const [isModalOpen, setModalOpen] = useState(false);
-    const [likeCount, setLikeCount] = useState<number>(() => {
-        // Проверяем, определен ли localStorage
-        if (typeof window !== 'undefined') {
-            const savedLikeCount = localStorage.getItem(`likeCount_${title}`);
-            return savedLikeCount ? parseInt(savedLikeCount, 10) : 0;
-        }
-        return 0;
-    });
+
 
     const features = badges.map((badge) => (
         <Badge
@@ -44,24 +37,9 @@ export function BadgeCard({ image, title, description, country, badges }: BadgeC
         </Badge>
     ));
 
-    const handleLikeClick = () => {
-        setLikeCount((prevCount) => {
-            const newCount = prevCount + 1;
-            // Сохраняем новое значение в localStorage, если он определен
-            if (typeof window !== 'undefined') {
-                localStorage.setItem(`likeCount_${title}`, newCount.toString());
-            }
-            return newCount;
-        });
-    };
 
-    // Используем useEffect для отслеживания изменений likeCount и сохранения их в localStorage
-    useEffect(() => {
-        // Сохраняем новое значение в localStorage, если он определен
-        if (typeof window !== 'undefined') {
-            localStorage.setItem(`likeCount_${title}`, likeCount.toString());
-        }
-    }, [likeCount, title]);
+
+
 
     return (
         <Card withBorder radius="md" p="md" className={classes.card}>
@@ -96,13 +74,11 @@ export function BadgeCard({ image, title, description, country, badges }: BadgeC
                 <Button radius="md" style={{ flex: 1 }} onClick={() => setModalOpen(true)}>
                     Подробнее
                 </Button>
-                <ActionIcon variant="default" radius="md" size={36} onClick={handleLikeClick}>
+                <ActionIcon variant="default" radius="md" size={36} >
                     <IconHeart className={classes.like} stroke={1.5} />
                 </ActionIcon>
                 {/* Отображение числа лайков */}
-                <Badge variant="light" color="red" style={{ cursor: 'default' }}>
-                    {likeCount}
-                </Badge>
+
             </Group>
 
             <Modal opened={isModalOpen} onClose={() => setModalOpen(false)} title="Подробности о вакансии">
